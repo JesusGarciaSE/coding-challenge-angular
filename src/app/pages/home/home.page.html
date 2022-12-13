@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="searchFoodForm" (ngSubmit)="onSubmit()">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Search: </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item>
+                <ion-label>Food:</ion-label>
+                <ion-input placeholder="ie. apple" type="text" name="food-to-search-for" formControlName="food"></ion-input>
+              </ion-item>
+              <ion-button type="submit">
+                <ion-icon slot="start" name="search"></ion-icon>
+                Search
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item *ngFor="let food of foodList" >
+              <ion-label>{{ food.description }} {{ food.foodCategory }} ({{ food.marketCountry }})</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>

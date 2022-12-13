@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Food Report</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-margin">
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{ foodItem.description }}</ion-card-title>
+            <ion-card-subtitle>{{ foodItem.marketCountry }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list class="ion-text-start">
+              <ion-list-header>Nutrients</ion-list-header>
+              <ion-item *ngFor="let nutrient of foodItem.foodNutrients" lines="none">
+                {{ nutrient.name }} : {{ nutrient.value }} {{ nutrient.unit }}
+              </ion-item>
+            </ion-list>
+            <ion-button class="ion-float-right" fill="clear" (click)="onAddFavorite()"><ion-icon slot="icon-only" name="heart-outline"></ion-icon></ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
